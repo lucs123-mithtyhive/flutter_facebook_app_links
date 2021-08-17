@@ -3,7 +3,7 @@ package it.remedia.flutter_facebook_app_links;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
-//import android.util.Log;
+import android.util.Log;
 
 import com.facebook.applinks.AppLinkData;
 import com.facebook.FacebookSdk;
@@ -63,6 +63,7 @@ public class FlutterFacebookAppLinksPlugin implements MethodCallHandler {
     final Handler mainHandler = new Handler(mContext.getMainLooper());
 
     // Get user consent
+    FacebookSdk.setApplicationId("571664137525019");
     FacebookSdk.setAutoInitEnabled(true);
     FacebookSdk.fullyInitialize();
     AppLinkData.fetchDeferredAppLinkData(mContext,
@@ -73,7 +74,7 @@ public class FlutterFacebookAppLinksPlugin implements MethodCallHandler {
           if(appLinkData!=null) {
 
             if(appLinkData.getTargetUri()!=null){
-              //Log.d("FB_APP_LINKS", "Deferred Deeplink Received: " + appLinkData.getTargetUri().toString());
+              Log.d("FB_APP_LINKS", "Deferred Deeplink Received: " + appLinkData.getTargetUri().toString());
               data.put("deeplink", appLinkData.getTargetUri().toString());
             }
 
@@ -87,14 +88,14 @@ public class FlutterFacebookAppLinksPlugin implements MethodCallHandler {
               @Override
               public void run() {
                 if(resultDelegate!=null)
-                  resultDelegate.success(data);
+                  resultDelegate.success(data.get("deeplink"));
               }
             };
 
             mainHandler.post(myRunnable);
 
           }else{
-            //Log.d("FB_APP_LINKS", "Deferred Deeplink Received: null link");
+            Log.d("FB_APP_LINKS", "Deferred Deeplink Received: null link");
 
             Runnable myRunnable = new Runnable() {
               @Override
