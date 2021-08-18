@@ -1,3 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="it.remedia.flutter_facebook_app_links">
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <application>
+    <meta-data
+      android:name="com.facebook.sdk.CodelessDebugLogEnabled"
+      android:value="true" />
+    <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled"
+      android:value="true"/>
+    <meta-data android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
+      android:value="true"/>
+  </application>
 </manifest>
