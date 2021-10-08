@@ -64,7 +64,7 @@ public class FlutterFacebookAppLinksPlugin implements MethodCallHandler {
 
     // Get user consent
     //TODO set FB app id
-    FacebookSdk.setApplicationId(796866467576519);
+    FacebookSdk.setApplicationId("796866467576519");
     FacebookSdk.setAutoInitEnabled(true);
     FacebookSdk.fullyInitialize();
     AppLinkData.fetchDeferredAppLinkData(mContext,
